@@ -29,14 +29,14 @@
     $mail->SMTPAuth = true;
     $mail->SMTPDebug = 0;
     $mail->Host = "smtp.gmail.com";
-    $mail->Username = 'genuwine12@gmail.com';
-    $mail->Password = '25562414Aa';
+    $mail->Username = 'mail@yourdomain.com';
+    $mail->Password = '*********';
     $mail->SMTPSecure = 'ssl';
     $mail->Port = 465;
 
-    $mail->setFrom('genuwine12@gmail.com', 'Andre');
-    $mail->addAddress('genuwine12@gmail.com', 'Andre');
-    $mail->addReplyTo('genuwine12@gmail.com', 'Reply Address');
+    $mail->setFrom('mail@yourdomain.com', 'Name');
+    $mail->addAddress('mail@yourdomain.com', 'Name');
+    $mail->addReplyTo('mail@yourdomain.com', 'Reply Address');
 
     $mail->Subject = "Otto's Auto Home Page Form";
     $mail->Body    = $message;
