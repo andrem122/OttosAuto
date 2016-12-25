@@ -1,0 +1,607 @@
+/* Mixins
+@mixin background-image($position, $repeat, $size)
+  background:
+    position: $position $position
+    repeat: $repeat
+    size: $size
+@mixin icon-round($fg-color, $hw, $font-size, $bo-color: none, $ba-color: transparent)
+  border-radius: 50%
+  color: $fg-color
+  height: $hw
+  width: $hw
+  line-height: $hw
+  font-size: $font-size
+  border: 1px solid $bo-color
+  background-color: $ba-color
+  text-align: center
+
+@mixin hover-border($color: $theme-color)
+  content: ''
+  display: block
+  border-bottom: 3px solid $color
+  width: 0
+
+@mixin clearfix
+  content: ''
+  display: block
+  height: 0
+  visibility: hidden
+  clear: both
+
+/* Colors
+$theme-color: #77ba99
+$theme-color-2: #262730
+$theme-color-3: #8ddbe0
+$heading-color: #5c5c5c
+$body-color: #787f8c
+$nav: #333
+$nav-collapse: #444
+$white: #fff
+$facebook: #3C599F
+$twitter: #32CCFE
+$g-plus: #CF3D2E
+
+/* Basics
+html
+  overflow-x: hidden !important
+  -webkit-overflow-x: hidden !important
+body
+  color: $body-color
+  font:
+    size: 16px
+    family: 'Raleway', sans-serif
+  overflow-x: hidden
+  -webkit-overflow-x: hidden
+h1, h2
+  text:
+    transform: uppercase
+
+h1, h2, h3, h4
+  color: $heading-color
+
+a
+  transition: all 200ms ease-in-out
+  color: $body-color
+  &:hover
+    color: $theme-color
+    text:
+      decoration: none
+
+img
+  max-width: 100%
+  height: auto
+  vertical-align: middle
+
+  //buttons
+.btn-dft
+  font:
+    size: 100%
+  border:
+    radius: 0
+  color: $white
+  padding: 15px 30px
+  min-width: 210px
+  text:
+    transform: uppercase
+  background:
+    color: $theme-color
+  &:hover
+    color: $white
+    background:
+      color: #407c5e
+  &:focus
+    color: $white
+
+.btn-outline-primary
+  border: 1px solid $theme-color
+  text:
+    transform: uppercase
+
+.flex
+  display: flex
+  align-items: center
+  justify-content: center
+
+/*  Title Headings
+.title
+  text-align: center
+  margin:
+    bottom: 40px
+  h2
+    text-transform: uppercase
+    font:
+      size: 40px
+      weight: 900
+  hr
+    border:
+      width: 3px
+      color: $theme-color
+    margin:
+      top: 2em
+      bottom: 1.6em
+    width: 2.167%
+
+/* Top Bar Styling
+.top-bar
+  text-align: center
+  padding: 15px 0
+  .row
+    line-height: 1
+  ul
+    margin:
+      bottom: 0
+  li
+    margin-right: 40px
+    i
+      @include icon-round($theme-color, 35px, 16px, $theme-color)
+      margin-right: 8px
+
+/* logo
+.logo
+  padding: 20px 0
+  text:
+    align: center
+  h3
+    letter-spacing: 2px
+    margin: 0
+    text-transform: uppercase
+    color: $white
+  span
+    color: $white
+  img
+    margin:
+      bottom: 4px
+    height: 40px
+    width: 40px
+.logo.logo-header
+  background-color: $theme-color
+
+/* Speech Bubbles Styling
+p.triangle-border
+  position: relative
+  padding: 40px
+  margin: 1em 0 3em
+  border: 1px solid $white
+  color: $white
+  background: transparent
+  i
+    font:
+      size: 40px
+    float: left
+    margin:
+      right: 15px
+  &::before
+    content: ""
+    position: absolute
+    bottom: -20px
+    left: 40px
+    border-width: 20px 20px 0
+    border-style: solid
+    border-color: $white transparent
+    /* reduce the damage in FF3.0 */
+    display: block
+    width: 0
+  &::after
+    content: ""
+    position: absolute
+    bottom: -18px
+    left: 41px
+    border-width: 19px 19px 0
+    border-style: solid
+    border-color: $theme-color-2 transparent
+    /* reduce the damage in FF3.0 */
+    display: block
+    width: 0
+
+.facebook
+  background-color: $facebook
+
+.twitter
+  background-color: $twitter
+
+.g-plus
+  background-color: $g-plus
+
+.icon-social
+  margin:
+    top: 5px
+  text-align: center
+  color: rgba(255, 255, 255, 0.8)
+  transition: transform 150ms linear
+  height: 40px
+  width: 40px
+  border-radius: 50%
+  &::before
+    line-height: 40px
+  &:hover
+    transform: scale(1.2)
+    color: $white
+/* Container Fluid
+.container-fluid
+  padding: 0
+  margin: 0
+/* Container-88
+.container-88
+  width: 88%
+  margin: 0 auto
+/* Section
+.section
+  padding: 40px 0
+/* Top Bar
+
+/* Navbar styling
+#nav-menu
+  border:
+    radius: 0
+    width: 0
+  z-index: 999
+  margin: 0
+  background:
+    color: $nav
+  .navbar-nav
+    > li
+      > a
+        color: $white
+  li.active
+    > a
+      background:
+        color: transparent
+      &::after
+        content: ''
+        display: block
+        border-bottom: 3px solid $theme-color
+        width: 120%
+
+.navbar-nav
+  // allows the list item that is hovered over which has
+  // a dropdown menu to keep the hovered styling even
+  // as you hover over the items in the dropdown menu
+  > li.dropdown.open
+    > a.dropdown-toggle
+      background-color: transparent
+  > li
+    &:hover
+      a
+        &::after
+          width: 120%
+    // when direct children hovered over, apply
+    // styling to ::after element in the "a" tag
+    > a
+      &::after
+        transform: translateY(3px)
+        transition: all 200ms ease-in-out
+        @include hover-border($theme-color)
+      &:hover::after
+        width: 120%
+
+#nav-menu.affix
+  z-index: 999
+  position: fixed
+  top: 0
+  width: 100%
+
+.nav
+  > li
+    margin-right: 30px
+// Jumbotron
+.jumbotron
+  margin-bottom: 0
+.container-fluid
+  &::after
+    @include clearfix
+  section.jumbotron
+    @include background-image(center, no-repeat, cover)
+    border-radius: 0
+.jumbtron-desc
+  color: $white
+  padding: 0 10% 0 8%
+
+// Footer
+footer
+  color: $white
+  padding: 40px 0
+  background-color: $theme-color-2
+  .footer-nav
+    margin:
+      bottom: 20px
+    text-align: center
+    a
+      margin:
+        right: 2%
+      text:
+        decoration: none
+      transition: all 250ms ease-in-out
+      color: $white
+      text-transform: uppercase
+      letter-spacing: 2px
+      font-size: 80%
+      padding:
+        bottom: 2px
+      &:hover
+        transition: all 250ms ease-in-out
+        border-bottom: 1px solid $white
+  .social-media
+    margin:
+      bottom: 10px
+    text:
+      align: center
+    i
+      transition: transform 150ms ease-in-out
+      color: $white
+      margin-right: 15px
+      font:
+        size: 25px
+      &:hover
+        transform: scale(1.1)
+  .branding
+    text-align: center
+
+//about us
+#about-us
+  .about-block
+    img
+      width: 100%
+      margin:
+        bottom: 20px
+    .btn.btn-dft
+      width: 100%
+#staff
+  .staff-block
+    position: relative
+    left: -460%
+    border: 1px solid $body-color
+    padding: 30px
+    h3
+      color: $theme-color
+    img
+      width: 100%
+    span
+      display: block
+      margin:
+        bottom: 8px
+      color: $theme-color-2
+#offer
+  border:
+    top: 1px solid $theme-color-2
+    bottom: 1px solid $theme-color-2
+  overflow: hidden
+  position: relative
+  .overlay
+    z-index: -1
+    background-color: $theme-color
+    position: absolute
+    top: 0
+    left: -53%
+    width: 100%
+    height: 100%
+    transform: skew(25deg)
+  .icon-wrap
+    color: $white
+    display: table-cell
+    vertical-align: middle
+  .text-wrap
+    color: $white
+    display: table-cell
+    vertical-align: middle
+    h3
+      color: $white
+  ul.advantages
+    h2
+      margin:
+        left: 55px
+      color: $white
+    li.reason
+      display: table
+      i
+        @include icon-round($white, 53px, 24px, $white)
+        margin-right: 8px
+  .skills
+    li
+      margin:
+        bottom: 10px
+      &:last-child
+        margin-bottom: 0
+
+// Responsive Styles
+//min-widths starts
+@media all and (min-width: 1401px)
+  #offer
+    .advantages
+      .text-wrap
+        width: 450px
+@media all and (min-width: 768px)
+  #nav-menu.affix
+    box-shadow: 0 0.15em 0.35em 0 rgba(0,0,0,0.6)
+  //allow the dropdown menu to show when hovered over
+  nav.navbar-head li.dropdown:hover
+    > ul.dropdown-menu
+      display: block
+      transition: all 0.2s ease-in-out
+      li
+        padding: 8px 0
+      a
+        padding: 10px 20px
+  //hide the dropdown menu if clicked on when browser width > 767px
+  .open
+    > ul.dropdown-menu
+      display: none
+  //hide the dropdown angle near the drop down menu list item
+  .dropdown-toggle
+    i.fa-angle-double-down
+      margin-left: 5px
+      transform: translateY(3px)
+  ul.nav.navbar-nav
+    li#services-li-m
+      display: none
+
+@media all and (min-width: 992px)
+  //about us
+  #about-us
+    .about-block
+      .title
+        text:
+          align: left
+        hr
+          margin-right: 100%
+          width: 20%
+    .about-us-desc
+      margin:
+        top: 138px
+  #parallax
+    height: 380px
+    @include background-image(center, no-repeat, cover)
+    background:
+      attachment: fixed
+      image: url('http://localhost/Otto%27s%20Autos/Assets/Images/About/about.jpg')
+    .flex
+      height: 100%
+      h2
+        color: $white
+        font:
+          size: 60px
+
+//max-widths starts
+@media all and (max-width: 320px)
+  .title
+    h2
+      font:
+        size: 32px
+
+@media all and (max-width: 767px)
+  /* Navigation
+  .nav
+    > li
+      margin-right: 30px
+      > a
+        padding-left: 30px
+
+  // The container fluid containng our nav bar has the class .flex
+  // so that the nav items will center above a width of 768px
+  // make it display: block to prevent the mobile nav button
+  // from centering
+  #nav-menu
+    background:
+      color: rgba(0,0,0,0.8)
+    #navbar-collapse
+      box-shadow: 0 0.15em 0.35em 0 rgba(0,0,0,0.7)
+    .navbar-toggle
+      margin-right: 30px
+      padding: 15px
+      border:
+        color: $white
+      color: $white
+      &:hover, &:focus
+        background:
+          color: transparent
+      .icon-bar
+        background:
+          color:  $white
+  .container-fluid.flex
+    display: block
+  #navbar-collapse
+    > ul
+      background:
+        color: $nav-collapse
+      margin: 0
+      li
+        border:
+          bottom: 2px solid $nav
+        &:last-child
+          border: 0
+        a
+          padding: 15px
+  ul.nav.navbar-nav
+    li#services-li-d
+      display: none
+
+  //rotation of angle in dropdown menu
+  .angle-rotate
+    transform: rotate(-180deg)
+  #nav-menu
+    .navbar-nav
+      li.active
+        > a
+          &::after
+            display: none
+      //get rid of underline when hovering over nav items in the mobile menu
+      > li
+        > a
+          &::after
+            display: none
+      //apply transition property for angle
+      .dropdown-toggle
+        i
+          transition: transform 0.2s ease-in-out
+      .dropdown-menu
+        li
+          margin:
+            left: 2em
+          a
+            color: $white
+
+@media all and (max-width: 784px)
+  /* Header
+  .top-bar
+    height: 0
+    display: none
+  .logo
+    padding-bottom: 20px
+
+//medium devices
+@media all and (max-width: 991px)
+  .title
+    hr
+      width: 35%
+  //about us
+  #about-us
+    .about-block
+      margin:
+        bottom: 35px
+      img
+        width: 100%
+
+  #parallax
+    display: none
+
+  #offer
+    border: 0
+    background:
+      color: $theme-color
+    h2
+      color: $white
+      text:
+        align: center
+    .overlay
+      display: none
+    ul.advantages
+      margin-bottom: 30px
+      h2
+        margin-left: 0
+      li.reason
+        i
+          @include icon-round($white, 53px, 24px, transparent, $theme-color-3)
+      .text-wrap
+        width: auto
+        color: $white
+    div.skills
+      color: $white
+
+  #staff
+    .staff-block
+      margin-bottom: 40px
+
+@media all and (max-width: 1199px)
+  //offer
+  #offer
+    div.text-wrap
+      width: 250px
+
+  //staff
+  #staff
+    .staff-block
+      margin-bottom: 40px
+
+@media all and (max-width: 1400px)
+  #offer
+    .text-wrap
+      width: 320px

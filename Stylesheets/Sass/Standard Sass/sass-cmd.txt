@@ -1,0 +1,2 @@
+1. cd C:\Apache24\htdocs\Otto's Autos\Stylesheets
+2. sass --watch Sass/[insert]_Sass/[insert].sass:CSS/[insert]_CSS/[insert].css 

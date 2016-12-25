@@ -1,0 +1,11 @@
+RewriteEngine On
+# Home Link
+RewriteRule ^$ Otto's\ Autos/PHP/home.php
+# About Link
+RewriteRule ^about/?$ Otto's\ Autos/PHP/about.php
+# Contact Link
+RewriteRule ^contact/?$ Otto's\ Autos/PHP/contact.php
+# Services Link
+RewriteRule ^services/?$ Otto's\ Autos/PHP/services.php
+
+  
