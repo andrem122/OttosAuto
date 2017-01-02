@@ -23,7 +23,6 @@
   //images
   //jumbotron background image
   $jumboBi = "http://" . $_SERVER["HTTP_HOST"] . "/Otto%27s%20Autos/Assets/Images/Jumbotron/ottos-autos.jpg";
-  $jumboTemp = "http://static.livedemo00.template-help.com/wt_59050/images/backgrounds/bg-01-1920x660.jpg";
   //logo
   $logo = "http://" . $_SERVER["HTTP_HOST"] . "/Otto%27s%20Autos/Assets/Images/Logo/otto's-autos.png";
   //White Logo
@@ -77,7 +76,7 @@
     <div class="container-fluid">
       <?php require_once($header); ?>
       <!--jumbotron-->
-      <section class="jumbotron" style="background-image:<?php echo "url('" . $jumboTemp . "')"; ?>">
+      <section class="jumbotron" style="background-image:<?php echo "url('" . $jumboBi . "')"; ?>">
         <div class="row">
           <div class="col-lg-4">
             <div class="form-wrapper">
